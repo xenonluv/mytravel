@@ -44,6 +44,7 @@ class _TravelApp extends StatefulWidget {
 }
 
 class _TravelAppState extends State<_TravelApp> {
+  bool isBoarding = true;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -51,7 +52,11 @@ class _TravelAppState extends State<_TravelApp> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Row(
+      body: isBoarding
+      ?
+      _buildOnboarding(context)
+      :
+      Row(
         children: [
           Sidebar(
             width: width,
@@ -63,5 +68,34 @@ class _TravelAppState extends State<_TravelApp> {
       ),
     );
   }
+
+  Container _buildOnboarding(context) => Container(
+    decoration: const BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/seaback.jpg'))),
+        child: Padding(
+          padding:  EdgeInsets.only(
+            top: MediaQuery.of(context).size.height * 0.45,
+            bottom: MediaQuery.of(context).size.height * 0.1,
+            left: 30,
+            right: 30,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+              "Hidden of Travel Italy",
+          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+            fontSize: 65,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
