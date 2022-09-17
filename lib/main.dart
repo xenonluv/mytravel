@@ -77,25 +77,50 @@ class _TravelAppState extends State<_TravelApp> {
         child: Padding(
           padding:  EdgeInsets.only(
             top: MediaQuery.of(context).size.height * 0.45,
-            bottom: MediaQuery.of(context).size.height * 0.1,
+            bottom: MediaQuery.of(context).size.height * 0.31,
             left: 30,
             right: 30,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-              "Hidden of Travel Italy",
-          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            fontSize: 65,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Hidden of Travel Italy",
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      fontSize: 65,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+              ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    isBoarding = false;
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  padding: EdgeInsets.zero,
+                  elevation: 0,
+                ),
+                child: Row(
+                  children: const [
+                    Icon(
+                        Icons.arrow_circle_right_outlined,
+                      size: 50,
+                      color: Colors.white,
+                    ),
 
+                   Text(
+                        'Push Button'
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+}
