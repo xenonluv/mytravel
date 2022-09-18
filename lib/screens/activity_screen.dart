@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mytravel/models/activity_model.dart';
 import 'package:mytravel/widgets/custom_header.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({Key? key}) : super(key: key);
@@ -10,56 +8,88 @@ class ActivitiesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Activity> activities = Activity.activities;
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
       child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 50,),
-          const CustomHeader(title: 'Activities'),
-          MasonryGridView.count(
-            shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.all(10.0),
-              itemCount: 9,
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              itemBuilder: (context, index) {
-              Activity activity = activities[index];
-                return Column(
-                  children: [
-                    Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        image: DecorationImage(
-                          image: NetworkImage(activity.imgeUrl),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      activity.title,
-                      maxLines: 3,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .bodySmall!
-                          .copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                );
-              },
-          ),
+        children: const [
+          SizedBox(height: 50,),
+          CustomHeader(title: 'Activities'),
         ],
       ),
     );
   }
 }
+//
+// class Sidebar extends StatefulWidget {
+//   const Sidebar({
+//     Key? key,
+//     required this.height,
+//     required this.width,
+//  //   required this.navigator,
+//   }) : super(key: key);
+//
+//   final double height;
+//   final double width;
+//  // final GlobalKey<NavigatorState> navigator;
+//
+//   @override
+//   State<Sidebar> createState() => _SidebarState();
+// }
+//
+// class _SidebarState extends State<Sidebar> {
+//   List<Map> menu = [
+//     {'title': 'Activities', 'routeName': '/activities'},
+//     {'title': 'Hotels', 'routeName': '/hotels'},
+//     {'title': 'Flights', 'routeName': '/flights'},
+//     {'title': 'Restaurants', 'routeName': '/restaurants'},
+//
+//   ];
+//
+//   int sideBarIndex = 0;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: widget.width * 0.2,
+//         color: const Color(0xFF211955),
+//         child: Column(
+//         children: [
+//           SizedBox(
+//             height: widget.height * 0.05,
+//           ),
+//           ListView.builder(
+//               shrinkWrap: true,
+//               itemCount: menu.length,
+//               physics: const NeverScrollableScrollPhysics(),
+//               itemBuilder: (context, index) {
+//                 return RotatedBox(
+//                   quarterTurns: 3,
+//                   child: TextButton(
+//                       onPressed: () {
+//                         setState(() {
+//                           sideBarIndex = index;
+//                         });
+//                       },
+//                       child: Text(
+//                         menu[index]['title'],
+//                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+//                               fontWeight: (index == sideBarIndex)
+//                                   ? FontWeight.bold
+//                                   : FontWeight.normal,
+//                               color: (index == sideBarIndex)
+//                                   ? Colors.white
+//                                   : Colors.white.withAlpha(200),
+//                           letterSpacing: 2,
+//                             ),
+//                       )),
+//                 );
+//               })
+//         ],
+//       ),
+//     );
+//   }
+// }

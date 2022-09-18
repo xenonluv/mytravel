@@ -44,7 +44,6 @@ class _TravelApp extends StatefulWidget {
 }
 
 class _TravelAppState extends State<_TravelApp> {
-  bool isBoarding = true;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -52,11 +51,7 @@ class _TravelAppState extends State<_TravelApp> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: isBoarding
-      ?
-      _buildOnboarding(context)
-      :
-      Row(
+      body: Row(
         children: [
           Sidebar(
             width: width,
@@ -68,59 +63,5 @@ class _TravelAppState extends State<_TravelApp> {
       ),
     );
   }
-
-  Container _buildOnboarding(context) => Container(
-    decoration: const BoxDecoration(
-      image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage('assets/seaback.jpg'))),
-        child: Padding(
-          padding:  EdgeInsets.all(30
-            // top: MediaQuery.of(context).size.height,
-            // bottom: MediaQuery.of(context).size.width,
-            // left: 30,
-            // right: 30,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Hidden of Travel Italy",
-                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                      fontSize: 65,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-              ),
-              const Spacer(),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    isBoarding = false;
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  padding: EdgeInsets.zero,
-                  elevation: 0,
-                ),
-                child: Row(
-                  children: const [
-                    Icon(
-                        Icons.arrow_circle_right_outlined,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-
-                   Text(
-                        'Push Button'
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
 }
+
