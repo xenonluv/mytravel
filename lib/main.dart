@@ -75,11 +75,11 @@ class _TravelAppState extends State<_TravelApp> {
           fit: BoxFit.cover,
           image: AssetImage('assets/seaback.jpg'))),
         child: Padding(
-          padding:  EdgeInsets.only(
-            top: MediaQuery.of(context).size.height * 0.45,
-            bottom: MediaQuery.of(context).size.height * 0.31,
-            left: 30,
-            right: 30,
+          padding:  EdgeInsets.all(30
+            // top: MediaQuery.of(context).size.height,
+            // bottom: MediaQuery.of(context).size.width,
+            // left: 30,
+            // right: 30,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
